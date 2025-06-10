@@ -5,33 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather API</title>
-  
     <link rel="stylesheet" href="style.css?v=1">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div>
+    <main class="container">
+        <header>
             <h1 id="heading">Weather Manager</h1>
-            <br/>
-            <input type="text" id ="city_name"  placeholder="search_city">
-            <br/>
-            <br/>
-            <input type="button" onclick="callweather()" value="search">
-        </div>
-        <div class="result">
+        </header>
+        <section>
+            <form id="weather-form" autocomplete="off">
+                <label for="city_name">City Name:</label>
+                <input type="text" id="city_name" name="city_name" placeholder="Enter city" required>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+        <section class="result" aria-live="polite">
             <h2 id="city-name">------</h2>
+            <h2 id="weather-type">------</h2>
             <div>
-                <h2 id="weather-type">------</h2>
-                <div>
-                    <h3>Temp: <span id="temp"></span></h3>
-                    <h3>Min-temp: <span id="min-temp"> </span></h3>
-                    <h3>Max-temp: <span id="max-temp"></span></h3>
-                    <h3>Country: <span id="country"></span></h3>
-                </div>
+                <h3>Temp: <span id="temp"></span></h3>
+                <h3>Min Temp: <span id="min-temp"></span></h3>
+                <h3>Max Temp: <span id="max-temp"></span></h3>
+                <h3>Country: <span id="country"></span></h3>
             </div>
-        </div>
-    </div>
-    
+        </section>
+    </main>
+    <script>
+      document.getElementById('weather-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        callweather();
+      });
+    </script>
 </body>
 </html>
